@@ -18,7 +18,13 @@ export default new Vuex.Store({
         desc: task.desc,
         isDone: false
       })
-  	}
+  	},
+    doneTask(state, index){
+      state.tasks[index].isDone = true
+    },
+    deleteTask(state, index){
+      state.tasks.splice(index, 1);
+    }
   },
   actions: {
   },

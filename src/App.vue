@@ -25,6 +25,10 @@ export default {
   *{
     box-sizing: border-box;
   }
+  :root{
+  --doneColor: #26A65B;
+  --deleteColor: rgba(231, 76, 60,  80%);
+  }
   #app{
     background-color: #22313F;
     min-height: 100vh;

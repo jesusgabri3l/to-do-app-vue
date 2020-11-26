@@ -2,7 +2,7 @@
 	<div style="position: relative;">
     <button class="btn-addTask btn" @click="showModal"><i class="fa fa-plus"></i></button>
 	<div class="row" >
-		<div class="col-md-3" style="margin-top: 1rem; " v-for = "(task, index) of tasks">
+		<div class="col-md-3" style="margin-top: 1.5rem; " v-for = "(task, index) of tasks">
 			<Task v-bind="task" v-bind:index="index"/>
 		</div>
 	</div>
@@ -76,13 +76,13 @@ export default {
         icon: 'success',
         title: 'Task added!',
          timer: 1500,
-         allowOutsideClick: false,
          showConfirmButton: false,
          iconColor: '#26A65B'
         })
       },
 
       fieldsValidation(){
+
       let inputs = document.querySelectorAll('.taskInput')
       let validation = true
       for (var i = 0; i < inputs.length; i++) {
@@ -96,9 +96,6 @@ export default {
         this.hideModal()
         this.showAddedTaskAlert()
         this.addTask(this.newTask)
-        
-        
-
       }
       },
    }  
@@ -110,7 +107,7 @@ export default {
   position: absolute; 
   top: -40px;
   left: -50px;
-  background-color: #26A65B;
+  background-color: var(--doneColor);
   color: #E3E3E3;
   height: 3rem;
   width: 3rem;
@@ -123,7 +120,7 @@ export default {
 }
 .btn-done{
   width: 100%;
-  background-color: #26A65B;
+  background-color: var(--doneColor);
   color: #E3E3E3;
   font-family: 'Pacifico', cursive;
   box-shadow: 4px 4px 4px rgba(0,0,0,25%);
