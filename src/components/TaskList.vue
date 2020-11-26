@@ -3,28 +3,28 @@
     <button class="btn-addTask btn" @click="showModal"><i class="fa fa-plus"></i></button>
 	<div class="row" >
 		<div class="col-md-3" style="margin-top: 1rem; " v-for = "(task, index) of tasks">
-  
 			<Task v-bind="task" v-bind:index="index"/>
 		</div>
 	</div>
+ 
 <!-- MODAL PARA AGREGAR -->
   <b-modal ref="addTaskModal" hide-footer title="Add new task"    @show="resetModal" @hidden="resetModal">
       <div class="d-block text-center">
         <div class="form-row">
           <div class="col-md-12 form-group">
             <label for="">Task name</label>
-            <input type="text" class="form-control" v-model = "newTask.name">
+            <input type="text" class="form-control taskInput" v-model = "newTask.name">
           </div>
                 </div>
           <div class="form-row">
           <div class="col-md-12 form-group">
             <label for="">Task description</label>
-            <textarea class="form-control" v-model = "newTask.desc"></textarea>
+            <textarea class="form-control taskInput" v-model = "newTask.desc"></textarea>
           </div>
         </div>
       </div>
       <div class="modal-footer">
-      <button class="btn btn-done" @click="addTask(newTask); resetModal();">
+      <button class="btn btn-done" @click="fieldsValidation">
         <i class="fa fa-plus mr-2"  style="font-size: 1rem;"></i>Add task
       </button>
       </div>
@@ -54,18 +54,52 @@ export default {
       ...mapState(['tasks']),
    },
    methods: {
+
    	...mapMutations(['addTask']),
 
      showModal() {
         this.$refs['addTaskModal'].show()
       },
+
        hideModal() {
         this.$refs['addTaskModal'].hide()
       },
+
       resetModal() {
         this.newTask.name = ''
         this.newTask.desc = ''
-         this.hideModal()
+        this.hideModal()
+      },
+
+      showAddedTaskAlert(){
+        this.$swal({
+        icon: 'success',
+        title: 'Task added!',
+         timer: 1500,
+         allowOutsideClick: false,
+         showConfirmButton: false,
+         iconColor: '#26A65B'
+        })
+      },
+
+      fieldsValidation(){
+      let inputs = document.querySelectorAll('.taskInput')
+      let validation = true
+      for (var i = 0; i < inputs.length; i++) {
+        inputs[i].classList.remove('input-wrong', 'animate__animated', 'animate__shakeX', 'animate__fast')
+        if(inputs[i].value == '' || inputs[i].value == null){
+          inputs[i].classList.add('input-wrong', 'animate__animated', 'animate__shakeX', 'animate__fast')
+          validation = false
+        } 
+      }
+      if(validation){
+        this.hideModal()
+        this.showAddedTaskAlert()
+        this.addTask(this.newTask)
+        
+        
+
+      }
       },
    }  
 }
@@ -99,6 +133,13 @@ export default {
 .form-group label{
  font-family: 'Chilanka', cursive;
  font-weight: 400;
-
 }
+
+.input-wrong{
+  border: 1px solid rgba(231, 76, 60,  80%) !important;
+  transition: all 1.5s !important;
+  box-shadow: 3px 3px 4px rgba(231, 76, 60,  30%);
+}
+
+
 </style>

@@ -18,7 +18,6 @@ export default new Vuex.Store({
         desc: task.desc,
         isDone: false
       })
-      console.log(state.tasks)
   	}
   },
   actions: {
