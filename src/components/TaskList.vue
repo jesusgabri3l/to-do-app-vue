@@ -3,7 +3,7 @@
     <button class="btn-addTask btn" @click="showModal"><i class="fa fa-plus"></i></button>
 	<div class="row" >
 		<div class="col-md-3" style="margin-top: 1.5rem; " v-for = "(task, index) of tasks">
-			<Task v-bind="task" v-bind:index="index"/>
+			<TaskCard v-bind="task" v-bind:index="index"/>
 		</div>
 	</div>
  
@@ -13,13 +13,13 @@
         <div class="form-row">
           <div class="col-md-12 form-group">
             <label for="">Task name</label>
-            <input type="text" class="form-control taskInput" v-model = "newTask.name">
+            <input type="text" class="form-control taskInput" v-model = "newTask.name" placeholder="To do my room">
           </div>
                 </div>
           <div class="form-row">
           <div class="col-md-12 form-group">
             <label for="">Task description</label>
-            <textarea class="form-control taskInput" v-model = "newTask.desc"></textarea>
+            <textarea class="form-control taskInput" v-model = "newTask.desc" placeholder="I have to do my room, because is very messy"></textarea>
           </div>
         </div>
       </div>
@@ -35,12 +35,12 @@
 
 <script>
  import {mapState, mapMutations} from 'vuex'
- import Task from '@/components/Task'
+ import TaskCard from '@/components/TaskCard'
 export default {
 
   name: 'TaskList',
   components: {
-  	Task
+  	TaskCard
   },
   data () {
     return {

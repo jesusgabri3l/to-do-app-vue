@@ -3,7 +3,7 @@
 		<div class="card-header">
 			<h3 class="text-center" v-bind:class="{ done: isDone }">
         <router-link to = "/" >
-          {{index+1}}.  {{name}} <i class=" ml-2 fas fa-angle-right" style="vertical-align: bottom;"></i>
+          {{name}} <i class=" ml-2 fas fa-angle-right" style="vertical-align: bottom;"></i>
         </router-link>
       </h3>
      
@@ -24,7 +24,7 @@
 import {mapMutations} from 'vuex'
 export default {
 
-  name: 'Task',
+  name: 'TaskCard',
 
   props: ['id', 'name','desc', 'isDone', 'index'],
 
