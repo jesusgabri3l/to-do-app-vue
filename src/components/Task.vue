@@ -1,7 +1,13 @@
 <template>
 	<div class="card" v-bind:id="index">
 		<div class="card-header">
-			<h3 class="text-center" v-bind:class="{ done: isDone }">{{index+1}}.  {{name}}</h3>
+			<h3 class="text-center" v-bind:class="{ done: isDone }">
+        <router-link to = "/" >
+          {{index+1}}.  {{name}} <i class=" ml-2 fas fa-angle-right" style="vertical-align: bottom;"></i>
+        </router-link>
+      </h3>
+     
+       
 		</div>
     <div class="card-body">
       <p class="text-white" v-bind:class="{ done: isDone }">{{desc}}</p>
@@ -118,5 +124,8 @@ export default {
   text-decoration: line-through;
   text-decoration-color: var(--deleteColor);
    text-decoration-style: wavy;
+}
+a{
+  color: #E3E3E3;
 }
 </style>

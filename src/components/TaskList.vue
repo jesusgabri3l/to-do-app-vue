@@ -98,7 +98,7 @@ export default {
         this.addTask(this.newTask)
       }
       },
-   }  
+   }
 }
 </script>
 
