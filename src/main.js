@@ -28,6 +28,7 @@ new Vue({
   render: h => h(App),
   beforeCreate() {
 		this.$store.commit('initialiseStore');
+		this.$store.commit('initialiseProfile')
 	}
 
 }).$mount('#app')

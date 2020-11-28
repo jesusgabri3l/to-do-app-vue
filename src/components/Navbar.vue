@@ -61,4 +61,17 @@ export default {
 		padding-left: 4rem;
 		font-size: 1.2rem;
 	}
+	.router-link-exact-active{
+		text-decoration: underline;
+		padding-bottom: .5rem;
+		text-decoration-style: wavy;
+		text-decoration-color: var(--doneColor)
+	}
+	a:hover{
+		text-decoration: underline;
+		padding-bottom: .5rem;
+		text-decoration-style: wavy;
+		text-decoration-color: var(--doneColor);
+		transition: all 1.2s;
+	}
 </style>

@@ -5,9 +5,13 @@ Vue.use(Vuex)
 
 export default new Vuex.Store({
   state: {
-  	tasks: []
+  	tasks: [],
+    profile: {
+      name: 'Jesús Gabriel',
+      nickname: 'jesusgabri3l',
+      description: 'I want to be a front-end developer'
+    }
 },
-
   mutations: {
 
     initialiseStore(state) {
@@ -18,6 +22,17 @@ export default new Vuex.Store({
         state.tasks = datos
       }
     },
+
+    initialiseProfile(state){
+      let profile = JSON.parse(localStorage.getItem('profile'))
+      console.log(profile)
+      if(profile == null){
+        localStorage.setItem('profile', JSON.stringify(state.profile))
+      }else{
+        state.profile = profile
+      }
+    },
+
 
   	addTask(state,task){
      let id = state.tasks.length + 1

@@ -1,5 +1,15 @@
 <template>
-	<h1 class="text-white">
-		I'm a profile view
-	</h1>
+	<div class="d-flex justify-content-center">
+		<Profile />
+	</div>
 </template>
+
+<script>
+ 	import Profile from '@/components/Profile'
+
+ 	export default{
+		components: {
+			Profile
+		}
+	}
+</script>
