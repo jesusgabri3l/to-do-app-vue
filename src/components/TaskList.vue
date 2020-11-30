@@ -13,13 +13,13 @@
         <div class="form-row">
           <div class="col-md-12 form-group">
             <label for="">Task name</label>
-            <input type="text" class="form-control taskInput" v-model = "newTask.name" placeholder="To do my room">
+            <input type="text" class="form-control taskInput" v-model = "newTask.name" v-on:keyup.enter="fieldsValidation" placeholder="To do my room">
           </div>
                 </div>
           <div class="form-row">
           <div class="col-md-12 form-group">
             <label for="">Task description</label>
-            <textarea class="form-control taskInput" v-model = "newTask.desc" placeholder="I have to do my room, because is very messy"></textarea>
+            <textarea class="form-control taskInput" v-on:keyup.enter="fieldsValidation" v-model = "newTask.desc" placeholder="I have to do my room, because is very messy"></textarea>
           </div>
         </div>
       </div>

@@ -9,8 +9,9 @@
 					<router-link to = "/tasks" >
 						<i class="fa fa-tasks mr-2" style="font-size: 1rem; "></i>Tasks
 					</router-link>
-      				<router-link to="/profile">
-      					<i class="fa fa-id-badge mr-2" style="font-size: 1rem;"></i>Profile
+      				<router-link 
+      				:to="{name : 'Profile', params : {nickname : profile.nickname} }">
+      					<i class="fa fa-id-badge mr-2" style="font-size: 1rem;"></i>{{profile.nickname}}
       				</router-link>	
 				</div>
 			</div>
@@ -20,6 +21,7 @@
 </template>
 
 <script>
+import {mapState} from 'vuex'
 export default {
 
   name: 'navbar',
@@ -28,7 +30,10 @@ export default {
     return {
 
     }
-  }
+  },
+ computed : {
+      ...mapState(['profile']),
+   }
 }
 </script>
 

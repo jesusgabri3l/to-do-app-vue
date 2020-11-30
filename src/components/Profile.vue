@@ -12,11 +12,11 @@
 			</div>
 
 			<div class="form-row mt-3">
-				<inputType col = "col-md-12" label = "Description" placeholder = "Some short description" v-bind:valueInput = "profile.description" @input-value = "profile.description = $event" />
+				<inputType col = "col-md-12" label = "Description" placeholder = "Some short description" v-bind:valueInput = "profile.description" @input-value = "newProfile.description = $event" />
 			</div>
 		</div>
 		<div class="card-footer d-flex justify-content-center align-items-center py-3">
-			<button class="btn btn-done" style="width: 50%;" @click = "editProfile(profile); showUpdatedAlert()"><i class="fa fa-save mr-2"></i>Save profile</button>
+			<button class="btn btn-done" style="width: 50%;" @click = "validationFields()"><i class="fa fa-save mr-2"></i>Save profile</button>
       
 		</div>
 	</div>
@@ -33,7 +33,7 @@ export default {
   },
   data () {
     return {
-   
+     
     }
   },
   methods:{
@@ -50,7 +50,33 @@ export default {
          iconColor: '#26A65B'
         })
     },
-
+    showWrongAlert(){
+      this.$swal({
+         icon: 'error',
+        title: "We can not update your profile. Field(s) missing!",
+         timer: 1500,
+         showConfirmButton: false,
+         iconColor: '#e74c3c'
+      })
+    },
+    validationFields(){
+      const arrayVal = Object.values(this.profile)
+      let validation = true;
+      for (var i = 0; i < arrayVal.length; i++) {
+        if(arrayVal[i] == '' || arrayVal[i] == null){
+          validation = false
+        }
+      }
+      if(validation){
+        this.editProfile(this.profile)
+        this.showUpdatedAlert()
+        setTimeout( () => {
+        this.$router.push('/')
+        }, 1000)
+      }else{
+        this.showWrongAlert()
+      }
+    },
   },
   computed : {
       ...mapState(['profile']),
