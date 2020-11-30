@@ -51,6 +51,13 @@ export default new Vuex.Store({
     deleteTask(state, index){
       state.tasks.splice(index, 1);
       localStorage.setItem('tasks', JSON.stringify(state.tasks));
+    },
+
+    editProfile(state, newProfile){
+      state.profile.name = newProfile.name
+      state.profile.nickname = newProfile.nickname
+      state.profile.description = newProfile.description
+      localStorage.setItem('profile', JSON.stringify(state.profile))
     }
   },
   actions: {

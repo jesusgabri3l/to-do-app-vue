@@ -23,7 +23,7 @@
           </div>
         </div>
       </div>
-      <div class="modal-footer">
+      <div class="modal-footer d-flex justify-content-center">
       <button class="btn btn-done" @click="fieldsValidation">
         <i class="fa fa-plus mr-2"  style="font-size: 1rem;"></i>Add task
       </button>
@@ -119,7 +119,7 @@ export default {
 
 }
 .btn-done{
-  width: 100%;
+  width: 70%;
   background-color: var(--doneColor);
   color: #E3E3E3;
   font-family: 'Pacifico', cursive;
@@ -132,11 +132,7 @@ export default {
  font-weight: 400;
 }
 
-.input-wrong{
-  border: 1px solid rgba(231, 76, 60,  80%) !important;
-  transition: all 1.5s !important;
-  box-shadow: 3px 3px 4px rgba(231, 76, 60,  30%);
-}
+
 
 
 </style>

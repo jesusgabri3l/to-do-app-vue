@@ -74,4 +74,9 @@ export default {
 label{
    font-family: 'Chilanka', cursive;
 }
+.input-wrong{
+  border: 1px solid rgba(231, 76, 60,  80%) !important;
+  transition: all 1.5s !important;
+  box-shadow: 3px 3px 4px rgba(231, 76, 60,  30%);
+}
 </style>

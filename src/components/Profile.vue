@@ -1,29 +1,30 @@
 <template>
 	<div class="card">
 		<div class="card-header">
-			<h4>My profile <i class="fa fa-user"></i></h4>
+			<h4>My profile<i class="fa fa-user ml-2"></i></h4>
 		</div>
 		<div class="card-body">
 			<div class="form-row">
 
-				<inputType col = "col-md-6" label = "Name" placeholder = "Jesús Gabriel" v-bind:valueInput = "profile.name"/>
-				
-				<inputType col = "col-md-6" label = "Nickname" placeholder = "jesusgabri3l" v-bind:valueInput = "profile.nickname"/>
+				<inputType col = "col-md-6" label = "Name" placeholder = "Jesús Gabriel" v-bind:valueInput = "profile.name" @input-value = "profile.name = $event" />
+
+				<inputType col = "col-md-6" label = "Nickname" placeholder = "jesusgabri3l" v-bind:valueInput = "profile.nickname" @input-value = "profile.nickname = $event" />
 			</div>
 
 			<div class="form-row mt-3">
-				<inputType col = "col-md-12" label = "Description" placeholder = "Some short description" v-bind:valueInput = "profile.description"/>
+				<inputType col = "col-md-12" label = "Description" placeholder = "Some short description" v-bind:valueInput = "profile.description" @input-value = "profile.description = $event" />
 			</div>
 		</div>
 		<div class="card-footer d-flex justify-content-center align-items-center py-3">
-			<button class="btn btn-done" style="width: 50%;"><i class="fa fa-save mr-2"></i>Save profile</button>
+			<button class="btn btn-done" style="width: 50%;" @click = "editProfile(profile); showUpdatedAlert()"><i class="fa fa-save mr-2"></i>Save profile</button>
+      
 		</div>
 	</div>
 </template>
 
 <script>
 import InputType from '@/components/InputType'
-import {mapState} from 'vuex'
+import {mapState, mapMutations} from 'vuex'
 export default {
 
   name: 'Profile',
@@ -32,13 +33,24 @@ export default {
   },
   data () {
     return {
-
+   
     }
   },
   methods:{
+    ...mapMutations(['editProfile']),
   	 isFocus(event){
   		event.target.parentElement
-  	}
+  	},
+    showUpdatedAlert(){
+       this.$swal({
+        icon: 'success',
+        title: 'Profile updated!',
+         timer: 1500,
+         showConfirmButton: false,
+         iconColor: '#26A65B'
+        })
+    },
+
   },
   computed : {
       ...mapState(['profile']),
